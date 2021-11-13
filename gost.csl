@@ -2,7 +2,7 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" default-locale="ru-RU">
 	<!-- default-locale="ru-RU"> -->
   <info>
-    <title>Мой ГОСТ R 7.0.5-2008 (номер)</title>
+    <title>Мой ГОСТ R 7.0.5-2008 (по алфавиту)</title>
     <id>https://raw.githubusercontent.com/ternikov/gost/master/gost-2008-num.csl</id>
     <link href="https://raw.githubusercontent.com/ternikov/gost/master/gost-2008-num.csl" rel="self"/>
     <author>
