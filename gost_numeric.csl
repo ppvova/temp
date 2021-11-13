@@ -2,9 +2,9 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" default-locale="ru-RU">
 	<!-- default-locale="ru-RU"> -->
   <info>
-    <title>ГОСТ R 7.0.5-2008 (по порядку следования)</title>
-    <id>https://raw.githubusercontent.com/ternikov/gost/master/gost-2008-num.csl</id>
-    <link href="https://raw.githubusercontent.com/ternikov/gost/master/gost-2008-num.csl" rel="self"/>
+    <title>ГОСТ 7.1-2003 (в порядке следования)</title>
+    <id>https://github.com/ppvova/temp/raw/main/gost_numeric.csl</id>
+    <link href="https://github.com/ppvova/temp/raw/main/gost_numeric.csl" rel="self"/>
     <author>
       <name>Based on Roman Raspopov, Andrey Chetverikov</name>
       <email>romanraspopov@gmail.com  andrey@chetvericov.ru</email>
@@ -152,7 +152,7 @@
 	
 	
   <macro name="iss">
-    <label variable="issue" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
+    <label variable="issue" form="short" prefix="- " suffix="&#160;" text-case="capitalize-first"/>
     <text variable="issue"/>    
   </macro>
 
@@ -274,14 +274,22 @@
   </macro>
 
   <macro name="year-date">
-    <date variable="issued">
+    <date variable="issued" prefix="- ">
       <date-part name="year"/>
     </date>
   </macro>
 
   <macro name="page">
-    <label variable="page" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
-    <text variable="page" suffix="."/>    
+    <choose>
+      <if variable="language">
+        <label variable="page" form="short" prefix="- " suffix="&#160;" text-case="capitalize-first"/>
+        <text variable="page" suffix="."/>
+      </if>
+      <else>
+        <label variable="page" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
+        <text variable="page" suffix="."/>
+      </else>
+    </choose>
   </macro>
 
   <macro name="number-of-pages">    
