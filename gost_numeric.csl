@@ -2,7 +2,7 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" default-locale="ru-RU">
 	<!-- default-locale="ru-RU"> -->
   <info>
-    <title>Мой ГОСТ R 7.0.5-2008 (по номеру)</title>
+    <title>ГОСТ R 7.0.5-2008 (по порядку следования)</title>
     <id>https://raw.githubusercontent.com/ternikov/gost/master/gost-2008-num.csl</id>
     <link href="https://raw.githubusercontent.com/ternikov/gost/master/gost-2008-num.csl" rel="self"/>
     <author>
@@ -496,8 +496,12 @@
             </group>                
           </group>
           <text macro="publisher"/>
-          <text macro="volume"/>
-          <text macro="collection-number"/>
+	  <group delimiter="&#160;# ">
+            <text macro="volume"/>
+          </group>
+	  <group delimiter="&#160;* ">
+            <text macro="collection-number"/>
+          </group>
           <text variable="title-short"/>
           <text macro="page"/>
         </group>
