@@ -87,6 +87,8 @@
       <term name="et-al"> и&#160;др.</term>
       <term name="and others"> и&#160;др.</term>
       <term name="page" form="short">с.</term>
+      <term name="page" form="short-en">p.</term>
+      <term name="page" form="short-ru">с.</term>
       <term name="number-of-pages" form="short">с.</term>
       <term name="number-of-volumes" form="short">т.</term>
       <term name="note" form="long"></term>
@@ -94,7 +96,7 @@
       <term name="collection-editor" form="short">сост.</term>
       <term name="collection-number" form="short">вып.</term>
 	 <term name="accessed">дата обращения</term>
-	    <term name="issue" form="short">№</term>
+	    <term name="issue" form="short">N</term>
       <term name="translator" form="short">
         <single>пер.</single>
         <multiple>пер.</multiple>
@@ -142,10 +144,10 @@
 <macro name="issues">
     <choose>
       <if variable="language">        
-        <text variable="issue" prefix="№&#160;"/>
+        <text variable="issue" prefix="No.&#160;"/>
        </if>
       <else>
-        <text variable="issue" prefix="No.&#160;"/>
+        <text variable="issue" prefix="N&#160;"/>
       </else>
     </choose>
   </macro>
@@ -282,11 +284,11 @@
   <macro name="page">
     <choose>
       <if variable="language">
-        <label variable="page" form="short" prefix="- " suffix="&#160;" text-case="capitalize-first"/>
+        <label variable="page" form="short-en" prefix="" suffix="&#160;" text-case="capitalize-first"/>
         <text variable="page" suffix="."/>
       </if>
       <else>
-        <label variable="page" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
+        <label variable="page" form="short-ru" prefix="- " suffix="&#160;" text-case="capitalize-first"/>
         <text variable="page" suffix="."/>
       </else>
     </choose>
@@ -399,7 +401,7 @@
 	<text variable="issue" text-case="capitalize-first"/>
 <!--		<choose>
               <if variable="language">  
-		             <text variable="issue" prefix="№&#160;"/>
+		             <text variable="issue" prefix="N&#160;"/>
               </if>
               <else>
                             <text variable="issue" prefix="No.&#160;"/>
@@ -536,10 +538,10 @@
 	<!--    <label variable="issues" text-case="capitalize-first"/>
 <label variable="issue" form="short" text-case="capitalize-first"/>
 <text macro="volcheck"/>
-<text variable="issue" prefix="№&#160;"/>   
+<text variable="issue" prefix="N&#160;"/>   
 		<choose>
               <if variable="language">  
-                            <text variable="issue" prefix="№&#160;"/>
+                            <text variable="issue" prefix="N&#160;"/>
               </if>
               <else>
                             <text variable="issue" prefix="No.&#160;"/>
