@@ -84,16 +84,16 @@
 
   <locale xml:lang="ru">
     <terms>
-      <term name="et-al"> form="en"> et&#160;al.</term>
-      <term name="et-al"> form="ru"> и&#160;др.</term>
-      <term name="and others"> form="en"> et&#160;al.</term>
-      <term name="and others"> form="ru"> и&#160;др.</term>
+      <term name="et-al" form="en"> et&#160;al.</term>
+      <term name="et-al" form="ru"> и&#160;др.</term>
+      <term name="and others" form="en"> et&#160;al.</term>
+      <term name="and others" form="ru"> и&#160;др.</term>
       <term name="page" form="short-en">p.</term>
       <term name="page" form="short-ru">с.</term>
-      <term name="number-of-pages-en" form="short">с.</term>
-      <term name="number-of-pages-en" form="short">p.</term>
-      <term name="number-of-volumes-ru" form="short">т.</term>
-      <term name="number-of-volumes-en" form="short">vols.</term>
+      <term name="number-of-pages" form="short-ru">с.</term>
+      <term name="number-of-pages" form="short-en">p.</term>
+      <term name="number-of-volumes" form="short-ru">т.</term>
+      <term name="number-of-volumes" form="short-en">vols.</term>
       <term name="note" form="long"></term>
       <term name="note" form="short"></term>
       <term name="collection-editor" form="short">сост.</term>
@@ -103,7 +103,7 @@
       <term name="issue" form="short-ru">N</term>
       <term name="volume" form="short-en">Vol.</term>
       <term name="volume" form="short-ru">Т.</term>
-      <term name="volume" form="none"></term>
+      <term name="page-range-delimiter">-</term>
       <term name="translator" form="short">
         <single>пер.</single>
         <multiple>пер.</multiple>
@@ -151,11 +151,11 @@
   <macro name="iss">
     <choose>
       <if variable="language">        
-        <label variable="issue" form="short-en" prefix="- " suffix="&#160;" text-case="capitalize-first"/>
+        <label variable="issue" form="short-en" prefix="" suffix="&#160;" text-case="capitalize-first"/>
         <text variable="issue"/>    
       </if>
       <else>
-        <label variable="issue" form="short-ru" prefix="- " suffix="&#160;" text-case="capitalize-first"/>
+        <label variable="issue" form="short-ru" prefix="" suffix="&#160;" text-case="capitalize-first"/>
         <text variable="issue"/>    
       </else>
     </choose>
@@ -184,8 +184,7 @@
     <names variable="author" suffix=". ">
       <!-- Добавить запятую между фамилией и инициалами автора: sort-separator=",&#160;", иначе sort-separator="&#160;" -->
       <!-- Сделать шрифт фамилий и инициалов авторов наклонным: font-style="italic", иначе font-style="normal" -->
-      <name et-al-min="4" et-al-use-first="3" suppress-min="5" initialize-with=".&#160;" font-style="normal" name-as-sort-order="all" sort-separator="&#160;"/> 
-      <et-al term="and others"/>
+      <name initialize-with="." font-style="normal" name-as-sort-order="all" sort-separator="&#160;"/> 
     </names>
     <text variable="title"/>
   </macro>
@@ -237,7 +236,7 @@
 		  <text variable="publisher-place"/>
       <text variable="publisher"/>
     </group>
-    <text macro="year-date" suffix="."/>     
+    <text macro="year-date"/>     
   </macro>
 
   <macro name="day-month">
@@ -248,7 +247,7 @@
   </macro>
 
   <macro name="year-date">
-    <date variable="issued" prefix="- ">
+    <date variable="issued">
       <date-part name="year"/>
     </date>
   </macro>
@@ -257,11 +256,11 @@
     <choose>
       <if variable="language">
         <label variable="page" form="short-en" prefix="" suffix="&#160;" text-case="capitalize-first"/>
-        <text variable="page" suffix="."/>
+        <text variable="page"/>
       </if>
       <else>
         <label variable="page" form="short-ru" prefix="- " suffix="&#160;" text-case="capitalize-first"/>
-        <text variable="page" suffix="."/>
+        <text variable="page"/>
       </else>
     </choose>
   </macro>
@@ -269,12 +268,12 @@
   <macro name="number-of-pages">    
     <choose>
       <if variable="language">
-        <text variable="number-of-pages"/>
-        <label variable="number-of-pages" form="short-en" prefix="- &#160;" suffix=""/>
+        <text variable="number-of-pages" prefix=""/>
+        <label variable="number-of-pages" form="short-en" prefix="&#160;" suffix=""/>
       </if>
       <else>
         <text variable="number-of-pages"/>
-        <label variable="number-of-pages" form="short-ru" prefix="- &#160;" suffix=""/>
+        <label variable="number-of-pages" form="short-ru" prefix="&#160;" suffix=""/>
       </else>
     </choose>
   </macro>
@@ -295,45 +294,48 @@
 
   <macro name="volume-and-or-issue">
     <choose>
-      <if variable="language">
-        <text macro="volume"/>          
-        <text variable="title-short"/>
-  	<text macro="iss"/>          
+      <if variable="volume"> <!-- Есть том -->
+        <choose>
+          <if variable="issue"> <!-- Есть том и номер -->
+            <text macro="volume-and-issue"/>
+          </if>
+          <else>  <!-- Есть том, нет номера -->
+            <text macro="volume"/>        
+          </else>
+        </choose>
       </if>
-      <else-if variable="volume"> <!-- Русский источник, есть том -->
-        <text macro="volume-and-issue-ru"/>
-      </else-if>
-      <else>  <!-- Русский источник, нет тома -->
+      <else>  <!-- Нет тома -->
         <text macro="iss"/>        
       </else>
     </choose>
   </macro>
 
-  <macro name="volume-and-issue-ru">
+  <macro name="volume-and-issue">
     <choose>
-      <if variable="issue">
-        <label variable="issue" form="short-ru" prefix="- " suffix="&#160;" text-case="capitalize-first"/>
-        <text variable="issue"/>    
-        <label variable="volume" form="none" prefix="(" suffix=")&#160;" text-case="capitalize-first"/>
-        <text variable="volume"/>
+      <if variable="language">
+        <label variable="volume" form="short-en" prefix="" suffix="&#160;" text-case="capitalize-first"/>
+        <text variable="volume"/>    
+        <label variable="issue" form="short-en" prefix=",&#160;" suffix="&#160;" text-case="capitalize-first"/>
+        <text variable="issue"/>
       </if>
       <else>
-        <text macro="volume"/>        
+        <label variable="issue" form="short-ru" prefix="" suffix="&#160;" text-case="capitalize-first"/>
+        <text variable="issue"/>    
+        <text variable="volume" prefix="&#160;(" suffix=")"/>
       </else>
     </choose>
   </macro>
-
 	
   <macro name="volume">
     <choose>
       <if variable="volume">
         <choose>
           <if variable="language">
-            <label variable="volume" form="short-en prefix="-&#160;" suffix="&#160;" text-case="capitalize-first"/>
+            <label variable="volume" form="short-en" prefix="" suffix=".&#160;" text-case="capitalize-first"/>
             <text variable="volume"/>
           </if>      
           <else>
-            <label variable="volume" form="short-ru" prefix="-&#160;" suffix="&#160;" text-case="capitalize-first"/>
+            <label variable="volume" form="short-ru" prefix="" suffix=".&#160;" text-case="capitalize-first"/>
             <text variable="volume"/>
           </else>      
         </choose>
@@ -405,9 +407,9 @@
 <macro name="access">
     <choose>
       <if variable="URL">
-        <text variable="- URL" prefix="URL: "/>
+        <text variable="URL" prefix="URL: "/>
         <group prefix=" (" suffix=").">
-          <text term="accessed" suffix="&#160;"/>
+          <text term="accessed" suffix=" "/>
           <date variable="accessed">
             <date-part name="day" suffix="." form="numeric-leading-zeros"/>
             <date-part name="month" suffix="." form="numeric-leading-zeros"/>
@@ -433,7 +435,7 @@
     Электронный ресурс локального доступа (CD-ROM, компьютерная программа и др.))__
     _______________________________________________________________________________ -->
       <if type="book">
-        <group delimiter=". ">
+        <group delimiter=". - " suffix=".">
           <group delimiter="&#160;/ ">
             <group delimiter=". ">
               <group delimiter="&#160;: ">
@@ -475,7 +477,7 @@
     ___________ РАЗДЕЛ КНИГИ, СТАТЬЯ В СБОРНИКЕ, СТАТЬЯ В ЭНЦИКЛОПЕДИИ ____________
     _______________________________________________________________________________ -->
       <else-if type="chapter paper-conference entry-encyclopedia" match="any">
-        <group delimiter=". ">
+        <group delimiter=". " suffix=".">
           <group delimiter="&#160;// ">
             <group delimiter="&#160;/ ">
               <text macro="author-title"/>
@@ -511,19 +513,21 @@
     _________________________ СТАТЬЯ В ПЕРИОДИКЕ, ЖУРНАЛЕ _________________________
     _______________________________________________________________________________ -->
       <else-if type="article-journal article-magazine" match="any">        
-        <group delimiter=". ">
-          <group delimiter="&#160;// ">
-            <group delimiter="&#160;/ ">
-              <group delimiter="&#160;: ">
-                <text macro="author-title"/>
-                <text variable="collection-title"/>                
-              </group>              
+        <group delimiter=". " suffix=".">
+          <group delimiter=". - ">
+            <group delimiter="&#160;// ">
+              <group delimiter="&#160;/ ">
+                <group delimiter="&#160;: ">
+                  <text macro="author-title"/>
+                  <text variable="collection-title"/>                
+                </group>              
       <!--        <text macro="second-position-authors-only"/>  -->
+              </group>
+              <text variable="container-title"/>            
             </group>
-            <text variable="container-title"/>            
+            <text macro="year-date"/>          
+            <text macro="volume-and-or-issue"/>          
           </group>
-          <text macro="year-date"/>          
-          <text macro="volume-and-or-issue"/>          
           <text macro="page"/>
         </group>
       </else-if>
@@ -532,18 +536,20 @@
     _______________________________________________________________________________ -->
       <else-if type="article-newspaper">        
         <group delimiter=". ">
-          <group delimiter="&#160;// ">
-            <group delimiter="&#160;/ ">
-              <group delimiter=" : ">
-                <text macro="author-title"/>
-                <text variable="section"/>                
-              </group>              
-              <text macro="second-position-authors-only"/>
+          <group delimiter=". - ">
+            <group delimiter="&#160;// ">
+              <group delimiter="&#160;/ ">
+                <group delimiter=" : ">
+                  <text macro="author-title"/>
+                  <text variable="section"/>                
+                </group>              
+                <text macro="second-position-authors-only"/>
+              </group>
+              <text variable="container-title"/>            
             </group>
-            <text variable="container-title"/>            
+            <text macro="year-date"/>                  
+            <text macro="day-month"/>          
           </group>
-          <text macro="year-date"/>                  
-          <text macro="day-month"/>          
           <text macro="page"/>
         </group>
       </else-if>
@@ -551,16 +557,16 @@
     ___________ ЭЛЕКТРОННЫЙ РЕСУРС УДАЛЕННОГО ДОСТУПА (ВЕБ-СТРАНИЦА)_______________
     _______________________________________________________________________________ -->
       <else-if type="webpage">
-        <group delimiter=". " prefix="">
+        <group delimiter=". - " prefix="">
           <group delimiter="&#160;/ ">
             <group delimiter="&#160;: ">
               <text macro="author-title" suffix=" [Электронный ресурс]"/>
               <text variable="genre"/>
             </group>
-            <group delimiter=" ">
+<!--            <group delimiter=" ">
               <text macro="second-position-authors-only"/>
               <text variable="note"/>
-            </group>            
+            </group>  -->          
           </group>            
           <text prefix=" " macro="access"/>
         </group>
@@ -569,7 +575,7 @@
     _____________________________ Другие типы источников __________________________
     _______________________________________________________________________________ -->
       <else>        
-        <group delimiter=". ">
+        <group delimiter=". - ">
           <group delimiter="&#160;/ ">
             <group delimiter=". ">
               <group delimiter="&#160;: ">
@@ -632,7 +638,7 @@
     _________ Непосредтсвенно БИБЛИОГРАФИЯ с сортировкой и локализацией ___________
     _______________________________________________________________________________ -->
 
-  <bibliography et-al-min="4" et-al-use-first="3" page-range-format="" second-field-align="margin">  
+  <bibliography page-range-format="" second-field-align="margin">  
     <sort>
       <key variable="citation-number"/>
     </sort>
