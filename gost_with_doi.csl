@@ -151,10 +151,6 @@
   </macro>
 	
 	
-  <macro name="iss">
-    <label variable="issue" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
-    <text variable="issue"/>    
-  </macro>
 
   <macro name="language-sort"> <!-- Макрос сортировки по полю "Language" (сначала русскоязычные источники, затем иностранные) -->
     <choose>
@@ -317,6 +313,11 @@
        </else>
     </choose>
   </macro>
+  
+  <macro name="iss">
+    <label variable="issue" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
+    <text variable="issue"/>    
+  </macro>
 	
   <macro name="volume">
     <choose>
@@ -326,6 +327,31 @@
       </if>      
     </choose>
   </macro>
+	
+  <macro name="volume-issue">
+    <choose>
+      <if variable="volume">
+        <label variable="volume" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
+        <text variable="volume"/>
+    	  <choose>
+          <if variable="language">
+    	  	<choose>
+          	  <if variable="issue">
+        		<text variable="issue" prefix="&#160;(" suffix=")"/>
+	    	  </if>
+	  	</choose>
+	    </if>
+	    <else>
+	  	<text macro="iss"/>    
+	    </else> 
+	  </choose>
+      </if>     
+	<else>
+	  <text macro="iss"/>    
+	</else> 
+    </choose>
+  </macro>
+
 
   <macro name="volumes">
     <label variable="volume" form="short" suffix="&#160;1-" text-case="capitalize-first"/>
