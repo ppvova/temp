@@ -342,7 +342,7 @@
 	  	</choose>
 	    </if>
 	    <else>
-	  	<text macro="iss"/>    
+	  	<text macro="iss" prefix=". "/>    
 	    </else> 
 	  </choose>
       </if>     
@@ -551,9 +551,7 @@
 	      </choose>
           </group>
           <text macro="year-date"/>          
-          <text macro="volume"/>          
-          <text variable="title-short"/>
-	    <text macro="iss"/>          
+          <text macro="volume-issue"/>          
 <!--    <label variable="issues" text-case="capitalize-first"/>
 	    <label variable="issue" form="short" text-case="capitalize-first"/>
 	    <text macro="volcheck"/>
