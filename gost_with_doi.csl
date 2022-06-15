@@ -541,7 +541,7 @@
               </else>
                 </choose> -->
           <text macro="page"/>
-          <text macro="doi"/>
+	    <text variable="DOI" prefix="doi: "/>   
         </group>
       </else-if>
 <!--_______________________________________________________________________________
