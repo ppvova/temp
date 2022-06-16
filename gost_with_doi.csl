@@ -74,7 +74,8 @@
       <term name="note" form="short"></term>
       <term name="collection-editor" form="short">coll.</term>
 	<term name="accessed">дата обращения</term>
-	    <term name="issue" form="short">No.</term>
+	<term name="issue" form="short">no.</term>
+	<term name="volume" form="short">vol.</term>
 	<term name="editortranslator" form="short">
         <single>ed.&#160;&amp; trans.</single>
         <multiple>eds.&#160;&amp; trans.</multiple>
@@ -93,8 +94,9 @@
       <term name="note" form="short"></term>
       <term name="collection-editor" form="short">сост.</term>
       <term name="collection-number" form="short">вып.</term>
-	 <term name="accessed">дата обращения</term>
-	    <term name="issue" form="short">№</term>
+	<term name="accessed">дата обращения</term>
+	<term name="issue" form="short">№</term>
+	<term name="volume" form="short">т.</term>
       <term name="translator" form="short">
         <single>пер.</single>
         <multiple>пер.</multiple>
@@ -543,7 +545,7 @@
             </group>
 		<choose>
               <if variable="language">  
-            	<text variable="container-title" font-style="italic"/>            
+            	<text variable="container-title" font-style="normal"/>            
               </if>
               <else>
             	<text variable="container-title" font-style="normal"/>            
