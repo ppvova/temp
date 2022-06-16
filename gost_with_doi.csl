@@ -112,8 +112,9 @@
           <term name="note" form="short"></term>
           <term name="collection-editor" form="short">сост.</term>
           <term name="collection-number" form="short">вып.</term>
-	     <term name="accessed">дата обращения</term>
-	        <term name="issue" form="short">№</term>
+	    <term name="accessed">дата обращения</term>
+	    <term name="issue" form="short">№</term>
+	    <term name="volume" form="short">т.</term>
           <term name="translator" form="short">
             <single>пер.</single>
             <multiple>пер.</multiple>
