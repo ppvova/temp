@@ -83,9 +83,9 @@
   </locale>
 
   <locale xml:lang="ru">
-    <terms>
-      <choose>
-        <if variable="language">        
+    <choose>
+      <if variable="language">        
+        <terms>
           <term name="et-al"> et&#160;al.</term>
           <term name="and others"> et&#160;al.</term>
           <term name="page" form="short">p.</term>
@@ -100,9 +100,11 @@
 	    <term name="editortranslator" form="short">
             <single>ed.&#160;&amp; trans.</single>
             <multiple>eds.&#160;&amp; trans.</multiple>
-          </term>   
-	  </if>
-	  <else>   
+          </term> 
+	  </terms>  
+	</if>
+	<else>   
+        <terms>
           <term name="et-al"> и&#160;др.</term>
           <term name="and others"> и&#160;др.</term>
           <term name="page" form="short">с.</term>
@@ -137,9 +139,9 @@
           <term name="month-10" form="short">окт.</term>
           <term name="month-11" form="short">нояб.</term>
           <term name="month-12" form="short">дек.</term>
-	  </else>
-	</choose>
-   </terms>
+        </terms>
+	</else>
+    </choose>
   </locale>
 
   <locale>
