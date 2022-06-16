@@ -63,9 +63,29 @@
 
     _______________________________________________________________________________ -->
 
-    <choose>
-      <if variable="language">        
-        <terms>
+  <locale xml:lang="en">
+    <terms>
+      <term name="et-al"> et&#160;al.</term>
+      <term name="and others"> et&#160;al.</term>
+      <term name="page" form="short">p.</term>
+      <term name="number-of-pages" form="short">p.</term>
+      <term name="number-of-volumes" form="short">vols.</term>
+      <term name="note" form="long"></term>
+      <term name="note" form="short"></term>
+      <term name="collection-editor" form="short">coll.</term>
+	<term name="accessed">дата обращения</term>
+	    <term name="issue" form="short">No.</term>
+	<term name="editortranslator" form="short">
+        <single>ed.&#160;&amp; trans.</single>
+        <multiple>eds.&#160;&amp; trans.</multiple>
+      </term>   
+    </terms>
+  </locale>
+
+  <locale xml:lang="ru">
+    <terms>
+      <choose>
+        <if variable="language">        
           <term name="et-al"> et&#160;al.</term>
           <term name="and others"> et&#160;al.</term>
           <term name="page" form="short">p.</term>
@@ -81,10 +101,8 @@
             <single>ed.&#160;&amp; trans.</single>
             <multiple>eds.&#160;&amp; trans.</multiple>
           </term>   
-        </terms>
-      </if>
-	<else>
-        <terms>
+	  </if>
+	  <else>   
           <term name="et-al"> и&#160;др.</term>
           <term name="and others"> и&#160;др.</term>
           <term name="page" form="short">с.</term>
@@ -94,9 +112,8 @@
           <term name="note" form="short"></term>
           <term name="collection-editor" form="short">сост.</term>
           <term name="collection-number" form="short">вып.</term>
-	    <term name="accessed">дата обращения</term>
-	    <term name="issue" form="short">№</term>
-	    <term name="volume" form="short">т.</term>
+	     <term name="accessed">дата обращения</term>
+	        <term name="issue" form="short">№</term>
           <term name="translator" form="short">
             <single>пер.</single>
             <multiple>пер.</multiple>
@@ -104,7 +121,7 @@
           <term name="editortranslator" form="short">
             <single>ред. и пер.</single>
             <multiple>ред. и пер.</multiple>
-          </term>     
+          </term>  
 
           <!-- SHORT MONTH FORMS -->
           <term name="month-01" form="short">янв.</term>
@@ -119,9 +136,10 @@
           <term name="month-10" form="short">окт.</term>
           <term name="month-11" form="short">нояб.</term>
           <term name="month-12" form="short">дек.</term>
-        </terms>
-      </else>
-    </choose>
+	  </else>
+	</choose>
+   </terms>
+  </locale>
 
   <locale>
     <terms>
