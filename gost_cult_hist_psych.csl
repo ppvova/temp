@@ -325,6 +325,28 @@
     </choose>
   </macro>
 
+  <macro name="volume-issue">
+	<choose>
+		<if variable="language">
+			<choose>	
+				<if variable="volume">
+					<text variable="volume" prefix="Vol.&#160;" suffix=""/>
+					<text variable="issue" prefix="&#160;(" suffix=")"/>
+				</if>
+				<else>
+					<text variable="issue" prefix="No.&#160;" suffix=""/>	
+				</else>
+			</choose>
+		</if>
+		<else>
+  			<group delimiter=". ">
+				<text variable="volume" prefix="Т.&#160;" suffix=""/>
+				<text variable="issue" prefix="№&#160;" suffix=""/>
+			</group>
+		</else>
+	</choose>
+  </macro>
+
   <macro name="volumes">
     <label variable="volume" form="short" suffix="&#160;1-" text-case="capitalize-first"/>
     <text variable="number-of-volumes"/>
@@ -500,9 +522,7 @@
             <text variable="container-title"/>            
           </group>
           <text macro="year-date"/>          
-          <text macro="volume"/>          
-          <text variable="title-short"/>
-	    <text macro="iss"/>          
+          <text macro="volume-issue"/>          
           <text macro="page"/>
 	    <text variable="DOI" prefix="doi: "/>   
         </group>
