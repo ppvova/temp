@@ -353,27 +353,25 @@
   </macro>
 	
   <macro name="volume-issue">
-    <choose>
-      <if variable="volume">
-        <label variable="volume" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
-        <text variable="volume"/>
-    	  <choose>
-          <if variable="language">
-    	  	<choose>
-          	  <if variable="issue">
-        		<text variable="issue" prefix="&#160;(" suffix=")"/>
-	    	  </if>
-	  	</choose>
-	    </if>
-	    <else>
-	  	<text macro="iss" prefix=". "/>    
-	    </else> 
-	  </choose>
-      </if>     
-	<else>
-	  <text macro="iss"/>    
-	</else> 
-    </choose>
+	<choose>
+		<if variable="language">
+			<choose>	
+				<if variable="volume">
+					<text variable="volume" prefix="Vol.&#160;" suffix=""/>
+					<text variable="issue" prefix="&#160;(" suffix=")"/>
+				</if>
+				<else>
+					<text variable="issue" prefix="No.&#160;" suffix=""/>	
+				</else>
+			</choose>
+		</if>
+		<else>
+  			<group delimiter=". ">
+				<text variable="volume" prefix="Т.&#160;" suffix=""/>
+				<text variable="issue" prefix="№&#160;" suffix=""/>
+			</group>
+		</else>
+	</choose>
   </macro>
 
 
