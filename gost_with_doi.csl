@@ -3,8 +3,8 @@
 	<!-- default-locale="ru-RU"> -->
   <info>
     <title>ГОСТ R 7.0.5-2008 для КИП с DOI (по алфавиту)</title>
-    <id>https://raw.githubusercontent.com/ternikov/gost/master/gost-2008-num.csl</id>
-    <link href="https://raw.githubusercontent.com/ternikov/gost/master/gost-2008-num.csl" rel="self"/>
+    <id>https://github.com/ppvova/temp/raw/main/gost_with_doi.csl</id>
+    <link href="https://github.com/ppvova/temp/raw/main/gost_with_doi.csl" rel="self"/>
     <author>
       <name>Based on Roman Raspopov, Andrey Chetverikov</name>
       <email>romanraspopov@gmail.com  andrey@chetvericov.ru</email>
